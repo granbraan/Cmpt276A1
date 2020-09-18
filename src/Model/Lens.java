@@ -2,10 +2,10 @@ package Model;
 
 public class Lens {
     String make;
-    float maxAperture;
+    double maxAperture;
     int focalLength;
 
-    public Lens(String make, float maxAperture, int focalLength) {
+    public Lens(String make, double maxAperture, int focalLength) {
         this.make = make;
         this.maxAperture = maxAperture;
         this.focalLength = focalLength;
@@ -19,11 +19,11 @@ public class Lens {
         this.make = make;
     }
 
-    public float getMaxAperture() {
+    public double getMaxAperture() {
         return maxAperture;
     }
 
-    public void setMaxAperture(float maxAperture) {
+    public void setMaxAperture(double maxAperture) {
         this.maxAperture = maxAperture;
     }
 

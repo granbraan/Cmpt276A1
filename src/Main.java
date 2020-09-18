@@ -1,3 +1,6 @@
+import Model.Lens;
+import Model.LensManager;
+import UI.CameraTextUI;
 
 /**
  * Launch application

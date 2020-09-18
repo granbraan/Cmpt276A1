@@ -1,20 +1,28 @@
 package Model;
 
+import javax.swing.text.html.HTMLDocument;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class LensManager {
+public class LensManager implements Iterable<Lens> {
     List<Lens> lenses = new ArrayList<>();
 
-    public LensManager(List<Lens> lenses) {
-        this.lenses = lenses;
+    public void add(Lens lens)
+    {
+        lenses.add(lens);
     }
 
-    public List<Lens> getLenses() {
-        return lenses;
+    public int getIndex(Lens lens)
+    {
+        return lenses.indexOf(lens);
     }
 
-    public void setLenses(List<Lens> lenses) {
-        this.lenses = lenses;
+    @Override
+    public Iterator<Lens> iterator()
+    {
+        return lenses.iterator();
+
     }
+
 }
