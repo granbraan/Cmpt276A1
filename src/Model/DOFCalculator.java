@@ -2,25 +2,26 @@ package Model;
 
 public class DOFCalculator {
 
-    double hyperfocalDistance(int focalLength, double aperture, double circleOfConfusion)
+
+    public static double hyperfocalDistance(int focalLength, double aperture, double circleOfConfusion)
     {
         double focal = Math.pow(focalLength,2);
         return focal/(aperture*circleOfConfusion);
     }
 
-    double nearFocalPoint(int focalLength, double aperture, double circleOfConfusion, int distance)
+    public static double nearFocalPoint(int focalLength, double aperture, double circleOfConfusion, double distance)
     {
         double hyperFocal = hyperfocalDistance(focalLength, aperture, circleOfConfusion);
-        return (hyperFocal * distance)/ (hyperFocal + (distance - focalLength));
+        return  (hyperFocal * (distance*1000)) / (hyperFocal + ((distance*1000) - focalLength));
     }
 
-    double farFocalPoint(int focalLength, double aperture, double circleOfConfusion, int distance)
+    public static double farFocalPoint(int focalLength, double aperture, double circleOfConfusion, double  distance)
     {
         double hyperFocal = hyperfocalDistance(focalLength, aperture, circleOfConfusion);
-        return (hyperFocal * distance)/ (hyperFocal - (distance - focalLength));
+        return (hyperFocal * (distance*1000)) / (hyperFocal - ((distance*1000) - focalLength));
     }
 
-    double depthOfField(int focalLength, double aperture, double circleOfConfusion, int distance)
+    public static double depthOfField(int focalLength, double aperture, double circleOfConfusion, double distance)
     {
         double farFocal = farFocalPoint(focalLength, aperture, circleOfConfusion, distance);
         double nearFocal = nearFocalPoint(focalLength, aperture, circleOfConfusion, distance);
