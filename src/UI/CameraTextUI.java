@@ -64,10 +64,11 @@ public class CameraTextUI {
                                 in = new Scanner(System.in);
                                 distance = in.nextDouble();
 
+                                String hyper = formatM((DOFCalculator.hyperfocalDistance(lenses.getFocalLength(),aperture, COC))/1000);
                                 double near = DOFCalculator.nearFocalPoint(lenses.getFocalLength(), aperture, COC, distance);
                                 double far = DOFCalculator.farFocalPoint(lenses.getFocalLength(), aperture, COC, distance);
                                 String DoF = formatM((far-near)/1000);
-                                String hyper = formatM((DOFCalculator.hyperfocalDistance(lenses.getFocalLength(),aperture, COC))/1000);
+
 
                                 System.out.print("In focus: " + formatM(near/1000) + "m" + " to " + formatM(far/1000) + "m ");
                                 System.out.print("[DoF = " + DoF + "m]\n");

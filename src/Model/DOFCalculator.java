@@ -6,19 +6,27 @@ public class DOFCalculator {
     public static double hyperfocalDistance(int focalLength, double aperture, double circleOfConfusion)
     {
         double focal = Math.pow(focalLength,2);
-        return focal/(aperture*circleOfConfusion);
+        return (focal/(aperture*circleOfConfusion));
     }
 
     public static double nearFocalPoint(int focalLength, double aperture, double circleOfConfusion, double distance)
     {
         double hyperFocal = hyperfocalDistance(focalLength, aperture, circleOfConfusion);
-        return  (hyperFocal * (distance*1000)) / (hyperFocal + ((distance*1000) - focalLength));
+        return  ((hyperFocal * (distance*1000)) / (hyperFocal + ((distance*1000) - focalLength)));
     }
 
     public static double farFocalPoint(int focalLength, double aperture, double circleOfConfusion, double  distance)
     {
         double hyperFocal = hyperfocalDistance(focalLength, aperture, circleOfConfusion);
-        return (hyperFocal * (distance*1000)) / (hyperFocal - ((distance*1000) - focalLength));
+        if(distance > (hyperFocal/1000))
+        {
+            return Double.POSITIVE_INFINITY;
+        }
+        else
+        {
+            return ((hyperFocal * (distance*1000)) / (hyperFocal - ((distance*1000) - focalLength)));
+        }
+
     }
 
     public static double depthOfField(int focalLength, double aperture, double circleOfConfusion, double distance)
